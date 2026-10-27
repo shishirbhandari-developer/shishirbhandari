@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shishir Bhandari</title>
+<meta name="description" content="Notes, site work and writing by Shishir Bhandari, engineer at the Department of Roads, Nepal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --stone:#e6e8e3; --paper:#f1f2ee; --ink:#1c2a27; --muted:#55645f;
+  --line:#c5cac3; --marking:#e0a912; --river:#1d6b66; --soil:#8a5a3b;
+  --head:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--stone:#171e1c; --paper:#1f2826; --ink:#e8ebe6; --muted:#9aa8a2; --line:#34413e; --marking:#f0bd2c; --river:#5cb8b1; --soil:#c58b64;}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--stone);color:var(--ink);font:1.075rem/1.7 var(--body)}
+a{color:var(--river)}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--marking);outline-offset:3px}
+.wrap{max-width:60rem;margin:0 auto;padding:0 1.25rem}
+nav{padding:1.25rem 0;display:flex;gap:1.5rem;flex-wrap:wrap;font:600 .95rem var(--head)}
+nav a{color:var(--ink);text-decoration:none;border-bottom:2px solid transparent}
+nav a:hover{border-color:var(--marking)}
+header.hero{position:relative;overflow:hidden;padding:5rem 0 4.5rem}
+#contours{position:absolute;inset:0;width:100%;height:100%;z-index:0;color:var(--river);opacity:.28}
+.hero .wrap{position:relative;z-index:1}
+h1{font:800 clamp(2.8rem,9vw,6rem)/.98 var(--head);letter-spacing:-.03em;margin:0 0 1.25rem}
+.role{font:500 1.2rem/1.45 var(--head);margin:0}
+.place{color:var(--muted);margin:.25rem 0 0}
+/* the road: a dashed centreline that runs down the left of every section */
+main{position:relative}
+main .wrap{border-left:4px dashed var(--marking);margin-left:max(1.25rem,calc((100vw - 60rem)/2 + 1.25rem));padding-left:2rem;max-width:none;margin-right:1.25rem}
+section{position:relative;padding:3rem 0 1rem;max-width:44rem}
+section::before{content:"";position:absolute;left:calc(-2rem - 10px);top:3.55rem;width:16px;height:16px;border-radius:50%;background:var(--stone);border:4px solid var(--ink)}
+h2{font:700 2rem/1.1 var(--head);letter-spacing:-.02em;margin:0 0 .4rem}
+.intro{color:var(--muted);margin:0 0 1.75rem}
+.post{background:var(--paper);border:1px solid var(--line);border-radius:6px;margin:0 0 .9rem}
+.post summary{cursor:pointer;padding:1rem 1.25rem;list-style:none}
+.post summary::-webkit-details-marker{display:none}
+.post h3{font:700 1.25rem/1.3 var(--head);margin:0 0 .2rem}
+.meta{font:500 .85rem var(--head);color:var(--muted);margin:0}
+.post p.sum{margin:.5rem 0 0}
+.post .body{padding:0 1.25rem 1.25rem;border-top:1px solid var(--line)}
+.post[open] summary h3::after{content:" \2013 close";font-weight:500;color:var(--muted);font-size:.85rem}
+.works{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
+.work{background:var(--paper);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.work .pic{aspect-ratio:16/10;background:repeating-linear-gradient(135deg,var(--line) 0 10px,transparent 10px 20px);display:flex;align-items:flex-end}
+.work .pic img{width:100%;height:100%;object-fit:cover;display:block}
+.work div.txt{padding:1rem 1.15rem 1.2rem}
+.work h3{font:700 1.1rem/1.3 var(--head);margin:0 0 .15rem}
+.work p{margin:.45rem 0 0;font-size:.98rem;line-height:1.55}
+.sample{font:500 .8rem var(--head);color:var(--soil);margin:0 0 1rem}
+.about p{margin:0 0 1rem}
+footer{padding:3rem 0 3rem;color:var(--muted);font-size:.95rem}
+footer .wrap{border:0;margin:0 auto;padding:0 1.25rem}
+@media (max-width:640px){
+  main .wrap{margin-left:1.25rem;padding-left:1.5rem}
+  section::before{left:calc(-1.5rem - 10px)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="wrap"><nav aria-label="Main">
+  <a href="#writing">Writing</a><a href="#work">Site work</a><a href="#about">About</a><a href="#contact">Contact</a>
+</nav></div>
+
+<header class="hero">
+  <svg id="contours" aria-hidden="true" preserveAspectRatio="xMidYMid slice"></svg>
+  <div class="wrap">
+    <h1 id="name"></h1>
+    <p class="role" id="role"></p>
+    <p class="place" id="place"></p>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+<section id="writing">
+  <h2>Writing</h2>
+  <p class="intro" id="writingIntro"></p>
+  <div id="posts"></div>
+</section>
+
+<section id="work">
+  <h2>Site work</h2>
+  <p class="intro" id="workIntro"></p>
+  <p class="sample" id="sampleNote"></p>
+  <div class="works" id="works"></div>
+</section>
+
+<section id="about" class="about">
+  <h2>About</h2>
+  <div id="aboutText"></div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p id="contactText"></p>
+</section>
+
+</div>
+</main>
+
+<footer><div class="wrap">&copy; <span id="yr"></span> <span id="footName"></span></div></footer>
+
+<script>
+/* =====================================================================
+   EDIT THIS BLOCK ONLY. Everything on the page is built from it.
+   - To add a blog post: copy one { ... } item in POSTS and put it at the TOP.
+   - To add site work: copy one { ... } item in WORKS.
+   - For photos: put image files in an "images" folder next to index.html
+     and set image: "images/yourfile.jpg"
+   - Delete the sample items once you add your own.
+   ===================================================================== */
+const SITE = {
+  name: "Shishir Bhandari",
+  role: "Engineer, Department of Roads, Government of Nepal",
+  place: "Road Division Chaurjahari, Rukum West",
+  writingIntro: "Notes from the field: roads, bridges, slopes and drainage.",
+  workIntro: "Roads, bridges and culverts I have designed or supervised.",
+  showSampleNote: true,
+  about: [
+    "I am an engineer with the Department of Roads, posted at Road Division Chaurjahari in Rukum West.",
+    "My work covers road design, construction supervision, bridges and culverts, slope and drainage management, project documentation, and working with the communities these roads serve.",
+    "This site is my own space for writing down what I learn and keeping a record of the work."
+  ],
+  contactText: "Write to me at your-email@example.com.",
+  email: "your-email@example.com"
+};
+
+const POSTS = [
+  {
+    title: "Sample post: Why drainage decides how long a road lasts",
+    date: "2026-10-27",
+    tag: "Drainage",
+    summary: "Replace this sample with your own writing. Click a post to open it.",
+    body: "<p>This is where the full text of your post goes. You can use normal HTML: paragraphs, <strong>bold</strong>, lists and links.</p><p>Add as many paragraphs as you like.</p>"
+  }
+];
+
+const WORKS = [
+  {
+    title: "Sample: Culvert replacement",
+    place: "Chainage 12+400, Rukum West",
+    year: "2026",
+    note: "Replace with a short description: what was built, your role, and the result.",
+    image: ""
+  },
+  {
+    title: "Sample: Slope stabilisation",
+    place: "Add location",
+    year: "2026",
+    note: "Add retaining wall, breast wall or bioengineering details here.",
+    image: ""
+  }
+];
+/* ===================== end of editable block ===================== */
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+document.title = SITE.name;
+$("name").textContent = SITE.name;
+$("role").textContent = SITE.role;
+$("place").textContent = SITE.place;
+$("writingIntro").textContent = SITE.writingIntro;
+$("workIntro").textContent = SITE.workIntro;
+$("footName").textContent = SITE.name;
+$("yr").textContent = new Date().getFullYear();
+$("aboutText").innerHTML = SITE.about.map(p => "<p>" + esc(p) + "</p>").join("");
+$("contactText").innerHTML = esc(SITE.contactText).replace(esc(SITE.email), '<a href="mailto:' + esc(SITE.email) + '">' + esc(SITE.email) + "</a>");
+if (SITE.showSampleNote) $("sampleNote").textContent = "Sample entries below. Replace them with your own work.";
+
+$("posts").innerHTML = POSTS.map(p => {
+  const d = new Date(p.date).toLocaleDateString("en-GB", {day:"numeric", month:"long", year:"numeric"});
+  return '<details class="post"><summary><h3>' + esc(p.title) + '</h3><p class="meta">' + d + (p.tag ? " &middot; " + esc(p.tag) : "") + '</p><p class="sum">' + esc(p.summary) + '</p></summary><div class="body">' + p.body + '</div></details>';
+}).join("");
+
+$("works").innerHTML = WORKS.map(w =>
+  '<article class="work"><div class="pic">' + (w.image ? '<img src="' + esc(w.image) + '" alt="' + esc(w.title) + '" loading="lazy">' : "") + '</div><div class="txt"><h3>' + esc(w.title) + '</h3><p class="meta">' + esc(w.place) + " &middot; " + esc(w.year) + '</p><p>' + esc(w.note) + '</p></div></article>'
+).join("");
+
+/* contour lines, drawn once, like a topographic sheet of the hills */
+(function(){
+  const svg = $("contours"), W = 1200, H = 500, cx = 880, cy = 260;
+  svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+  let out = "";
+  for (let r = 40; r < 620; r += 34) {
+    let d = "";
+    for (let a = 0; a <= 360; a += 6) {
+      const t = a * Math.PI / 180;
+      const k = r * (1 + .12 * Math.sin(3 * t + r / 90) + .07 * Math.cos(5 * t - r / 60));
+      const x = cx + k * Math.cos(t) * 1.5, y = cy + k * Math.sin(t) * .7;
+      d += (a ? "L" : "M") + x.toFixed(1) + " " + y.toFixed(1);
+    }
+    out += '<path d="' + d + 'Z" fill="none" stroke="currentColor" stroke-width="1.2"/>';
+  }
+  svg.innerHTML = out;
+})();
+</script>
+</body>
+</html>
